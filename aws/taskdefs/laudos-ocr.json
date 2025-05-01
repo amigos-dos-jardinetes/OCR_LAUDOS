@@ -1,0 +1,58 @@
+{
+    "family": "comissao-laudos-ct-ocr",
+    "containerDefinitions": [
+        {
+            "name": "comissao-laudos-ocr",
+            "image": "279634266618.dkr.ecr.sa-east-1.amazonaws.com/comissao-laudos/ocr:latest",
+            "cpu": 128,
+            "memory": 1024,
+            "memoryReservation": 512,
+            "portMappings": [
+                {
+                    "name": "comissao-laudos-ocr-8000-tcp",
+                    "containerPort": 8000,
+                    "hostPort": 0,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/utfpr/ecs/comissao-laudos",
+                    "awslogs-region": "sa-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "taskRoleArn": "arn:aws:iam::279634266618:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::279634266618:role/ecsTaskExecutionRole",
+    "networkMode": "bridge",
+    "volumes": [],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "runtimePlatform": {
+        "cpuArchitecture": "ARM64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "tags": [
+        {
+            "key": "utfpr-depto",
+            "value": "DAELN-CT"
+        },
+        {
+            "key": "utfpr-usuario",
+            "value": "simonecrocetti"
+        }
+    ]
+}

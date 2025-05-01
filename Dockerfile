@@ -1,5 +1,7 @@
+ARG PYTHON_VERSION=latest
+
 # Use a imagem base do Python
-FROM python:3.11.4
+FROM python:${PYTHON_VERSION}
 
 # Defina o diretório de trabalho
 WORKDIR /app
