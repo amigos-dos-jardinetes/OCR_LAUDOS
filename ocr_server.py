@@ -16,6 +16,14 @@ six_digit_pattern = re.compile(r'^\d{6}$')
 # Inicializa o FastAPI
 app = FastAPI()
 
+@app.get("/health")
+async def health_check():
+    """
+    Endpoint de verificação de saúde.
+    Retorna um status 200 OK se o serviço estiver ativo.
+    """
+    return {"status": "OK"}
+
 # Endpoint FastAPI para upload da imagem e retorno do OCR
 @app.post("/")
 async def upload_image(file: UploadFile = File(...)):
